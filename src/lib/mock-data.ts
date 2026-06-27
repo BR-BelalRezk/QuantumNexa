@@ -1,0 +1,208 @@
+import { type BundleItem } from "@/store/bundle";
+
+// AI generated mock data for testing and development purposes
+
+export const mockItems: BundleItem[] = [
+  {
+    id: "cpu-1",
+    name: "Intel Core i5-13600K",
+    price: 250,
+    category: "CPU",
+    incompatibleWith: ["mobo-2", "mobo-3"],
+    specs: "13th Gen, 14 cores, 3.0-5.1 GHz",
+  },
+  {
+    id: "cpu-2",
+    name: "AMD Ryzen 5 7600X",
+    price: 220,
+    category: "CPU",
+    incompatibleWith: ["mobo-1", "mobo-4"],
+    specs: "6 cores, 3.6-5.3 GHz",
+  },
+  {
+    id: "cpu-3",
+    name: "Intel Core i7-13700K",
+    price: 400,
+    category: "CPU",
+    incompatibleWith: ["mobo-2", "mobo-3"],
+    specs: "13th Gen, 16 cores, 3.4-5.4 GHz",
+  },
+  {
+    id: "cpu-4",
+    name: "AMD Ryzen 7 7700X",
+    price: 350,
+    category: "CPU",
+    incompatibleWith: ["mobo-1", "mobo-4"],
+    specs: "8 cores, 4.5-5.4 GHz",
+  },
+
+  // Motherboards
+  {
+    id: "mobo-1",
+    name: "ASUS ROG Z790-E",
+    price: 280,
+    category: "Motherboard",
+    incompatibleWith: ["cpu-2", "cpu-4"],
+    specs: "Intel LGA1700, PCIe 5.0",
+  },
+  {
+    id: "mobo-2",
+    name: "MSI MPG B760",
+    price: 150,
+    category: "Motherboard",
+    incompatibleWith: ["cpu-1", "cpu-3"],
+    specs: "Intel LGA1700, PCIe 4.0",
+  },
+  {
+    id: "mobo-3",
+    name: "Gigabyte B760 AORUS",
+    price: 160,
+    category: "Motherboard",
+    incompatibleWith: ["cpu-1", "cpu-3"],
+    specs: "Intel LGA1700, PCIe 4.0",
+  },
+  {
+    id: "mobo-4",
+    name: "MSI MPG X870E",
+    price: 350,
+    category: "Motherboard",
+    incompatibleWith: ["cpu-1", "cpu-3"],
+    specs: "AMD AM5, PCIe 5.0",
+  },
+  {
+    id: "mobo-5",
+    name: "ASUS ROG X870-E",
+    price: 380,
+    category: "Motherboard",
+    incompatibleWith: ["cpu-1", "cpu-3"],
+    specs: "AMD AM5, PCIe 5.0",
+  },
+
+  // RAM
+  {
+    id: "ram-1",
+    name: "16GB DDR5 6000MHz",
+    price: 120,
+    category: "RAM",
+    incompatibleWith: [],
+    specs: "16GB, DDR5, 6000MHz, CAS 30",
+  },
+  {
+    id: "ram-2",
+    name: "32GB DDR5 6000MHz",
+    price: 220,
+    category: "RAM",
+    incompatibleWith: [],
+    specs: "32GB, DDR5, 6000MHz, CAS 30",
+  },
+  {
+    id: "ram-3",
+    name: "16GB DDR4 3600MHz",
+    price: 80,
+    category: "RAM",
+    incompatibleWith: [],
+    specs: "16GB, DDR4, 3600MHz, CAS 18",
+  },
+  {
+    id: "ram-4",
+    name: "32GB DDR4 3600MHz",
+    price: 150,
+    category: "RAM",
+    incompatibleWith: [],
+    specs: "32GB, DDR4, 3600MHz, CAS 18",
+  },
+
+  // Storage
+  {
+    id: "storage-1",
+    name: "1TB NVMe SSD (PCIe 4.0)",
+    price: 80,
+    category: "Storage",
+    incompatibleWith: [],
+    specs: "1TB, NVMe, PCIe 4.0, 7000MB/s",
+  },
+  {
+    id: "storage-2",
+    name: "2TB NVMe SSD (PCIe 4.0)",
+    price: 140,
+    category: "Storage",
+    incompatibleWith: [],
+    specs: "2TB, NVMe, PCIe 4.0, 7000MB/s",
+  },
+  {
+    id: "storage-3",
+    name: "1TB NVMe SSD (PCIe 5.0)",
+    price: 120,
+    category: "Storage",
+    incompatibleWith: [],
+    specs: "1TB, NVMe, PCIe 5.0, 12000MB/s",
+  },
+  {
+    id: "storage-4",
+    name: "2TB NVMe SSD (PCIe 5.0)",
+    price: 200,
+    category: "Storage",
+    incompatibleWith: [],
+    specs: "2TB, NVMe, PCIe 5.0, 12000MB/s",
+  },
+
+  // GPU
+  {
+    id: "gpu-1",
+    name: "NVIDIA RTX 4070 Super",
+    price: 599,
+    category: "GPU",
+    incompatibleWith: [],
+    specs: "12GB GDDR6X, 2475 CUDA Cores",
+  },
+  {
+    id: "gpu-2",
+    name: "NVIDIA RTX 4080",
+    price: 799,
+    category: "GPU",
+    incompatibleWith: [],
+    specs: "16GB GDDR6X, 5888 CUDA Cores",
+  },
+  {
+    id: "gpu-3",
+    name: "AMD Radeon RX 7700 XT",
+    price: 349,
+    category: "GPU",
+    incompatibleWith: [],
+    specs: "12GB GDDR6, 2560 Stream Processors",
+  },
+  {
+    id: "gpu-4",
+    name: "AMD Radeon RX 7900 XT",
+    price: 549,
+    category: "GPU",
+    incompatibleWith: [],
+    specs: "20GB GDDR6, 5376 Stream Processors",
+  },
+
+  // PSU
+  {
+    id: "psu-1",
+    name: "750W Gold Modular PSU",
+    price: 100,
+    category: "PSU",
+    incompatibleWith: [],
+    specs: "750W, 80+ Gold, Modular",
+  },
+  {
+    id: "psu-2",
+    name: "1000W Gold Modular PSU",
+    price: 150,
+    category: "PSU",
+    incompatibleWith: [],
+    specs: "1000W, 80+ Gold, Modular",
+  },
+  {
+    id: "psu-3",
+    name: "850W Platinum Modular PSU",
+    price: 140,
+    category: "PSU",
+    incompatibleWith: [],
+    specs: "850W, 80+ Platinum, Modular",
+  },
+];
