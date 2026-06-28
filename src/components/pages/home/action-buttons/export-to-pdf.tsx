@@ -1,20 +1,13 @@
-import type { BundleItem } from "@/store/bundle";
-import { exportBuildToPDF } from "@/utils";
-import { DownloadOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
 import { useState } from "react";
+import { Button, message } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 
-type props = {
-  maxBudget: number;
-  getTotalCost: () => number;
-  getSelectedItems: () => BundleItem[];
-};
+import { useBundleStore } from "@/store/bundle";
+import { exportBuildToPDF } from "@/utils";
 
-export default function ExportToPdf({
-  getSelectedItems,
-  maxBudget,
-  getTotalCost,
-}: props) {
+export default function ExportToPdf() {
+  const { getSelectedItems, getTotalCost, maxBudget } = useBundleStore();
+
   const [loading, setLoading] = useState(false);
 
   const selectedItems = getSelectedItems();
@@ -23,20 +16,23 @@ export default function ExportToPdf({
   const handleExportPDF = async () => {
     try {
       setLoading(true);
+
       await exportBuildToPDF(selectedItems, totalCost, maxBudget);
+
       message.success("Build summary exported to PDF!");
     } catch (error) {
-      message.error("Failed to export PDF");
       console.error(error);
+      message.error("Failed to export PDF");
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <Button
+      block
       type="primary"
       icon={<DownloadOutlined />}
-      block
       loading={loading}
       disabled={selectedItems.length === 0}
       onClick={handleExportPDF}

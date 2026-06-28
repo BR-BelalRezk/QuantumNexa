@@ -1,44 +1,22 @@
-import type { BundleItem } from "@/store/bundle";
-import ExportToPdf from "./export-to-pdf";
-import Redo from "./redo";
-import Reset from "./reset";
-import Undo from "./undo";
 import { Space } from "antd";
 
-type props = {
-  maxBudget: number;
-  undo: () => void;
-  canUndo: () => boolean;
-  redo: () => void;
-  canRedo: () => boolean;
-  getTotalCost: () => number;
-  getSelectedItems: () => BundleItem[];
-  reset: () => void;
-};
+import Undo from "./undo";
+import Redo from "./redo";
+import Reset from "./reset";
+import ExportToPdf from "./export-to-pdf";
 
-export default function ActionButtons({
-  undo,
-  canUndo,
-  redo,
-  canRedo,
-  getSelectedItems,
-  maxBudget,
-  getTotalCost,
-  reset,
-}: props) {
+export default function ActionButtons() {
   return (
-    <div className="space-y-2 pt-2 border-t border-border">
-      <Space orientation="vertical" style={{ width: "100%" }}>
+    <div className="space-y-2 border-t border-border pt-2">
+      <Space direction="vertical" style={{ width: "100%" }}>
         <div className="flex gap-2">
-          <Undo undo={undo} canUndo={canUndo} />
-          <Redo redo={redo} canRedo={canRedo} />
+          <Undo />
+          <Redo />
         </div>
-        <ExportToPdf
-          getSelectedItems={getSelectedItems}
-          maxBudget={maxBudget}
-          getTotalCost={getTotalCost}
-        />
-        <Reset getSelectedItems={getSelectedItems} reset={reset} />
+
+        <ExportToPdf />
+
+        <Reset />
       </Space>
     </div>
   );

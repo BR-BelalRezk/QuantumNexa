@@ -1,7 +1,5 @@
 import Logo from "@/components/shared/logo";
-import { useDrawer } from "@/context/mobile-drawer";
 import { useTheme } from "@/context/theme";
-import { useBundleStore } from "@/store/bundle";
 import { BgColorsOutlined } from "@ant-design/icons";
 import { Layout, Tooltip, Button } from "antd";
 
@@ -9,10 +7,6 @@ const { Header } = Layout;
 
 export default function MainHeader() {
   const { theme, toggleTheme } = useTheme();
-  const { getSelectedItems } = useBundleStore();
-  const { open } = useDrawer();
-
-  const selectedItems = getSelectedItems();
 
   return (
     <Header className="sticky top-0 z-50 bg-white dark:bg-slate-900 shadow-md border-b border-border">
@@ -31,13 +25,6 @@ export default function MainHeader() {
               className="text-foreground"
             />
           </Tooltip>
-          <Button
-            type="primary"
-            onClick={open}
-            className="inline-flex md:hidden"
-          >
-            View Cart ({selectedItems.length})
-          </Button>
         </div>
       </div>
     </Header>

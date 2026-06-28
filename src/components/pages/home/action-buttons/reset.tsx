@@ -1,24 +1,23 @@
-import type { BundleItem } from "@/store/bundle";
-import { DeleteOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 
-type props = {
-  getSelectedItems: () => BundleItem[];
-  reset: () => void;
-};
+import { useBundleStore } from "@/store/bundle";
 
-export default function Reset({ getSelectedItems, reset }: props) {
+export default function Reset() {
+  const { reset, getSelectedItems } = useBundleStore();
+
   const selectedItems = getSelectedItems();
 
   const handleReset = () => {
     reset();
     message.info("Build reset to empty state");
   };
+
   return (
     <Button
       danger
-      icon={<DeleteOutlined />}
       block
+      icon={<DeleteOutlined />}
       disabled={selectedItems.length === 0}
       onClick={handleReset}
     >

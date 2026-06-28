@@ -6,9 +6,7 @@ import IntroScreen from "@/components/screens/intro-screen";
 import MainScreen from "@/components/screens/main-screen";
 
 import { ThemeProvider, useTheme } from "@/context/theme";
-import { DrawerProvider } from "@/context/mobile-drawer";
 import { Home } from "@/components/pages";
-
 
 function AppContent() {
   const { theme: currentTheme } = useTheme();
@@ -33,18 +31,15 @@ function AppContent() {
         },
       }}
     >
-     
-
-        <AnimatePresence mode="wait">
-          {loading ? (
-            <IntroScreen key="intro" />
-          ) : (
-            <MainScreen key="main">
-              <Home />
-            </MainScreen>
-          )}
-        </AnimatePresence>
-   
+      <AnimatePresence mode="wait">
+        {loading ? (
+          <IntroScreen key="intro" />
+        ) : (
+          <MainScreen key="main">
+            <Home />
+          </MainScreen>
+        )}
+      </AnimatePresence>
     </ConfigProvider>
   );
 }
@@ -52,9 +47,7 @@ function AppContent() {
 export default function App() {
   return (
     <ThemeProvider defaultTheme="system">
-      <DrawerProvider>
-        <AppContent />
-      </DrawerProvider>
+      <AppContent />
     </ThemeProvider>
   );
 }
