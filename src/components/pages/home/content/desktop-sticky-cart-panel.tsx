@@ -1,7 +1,8 @@
 import { Card } from "antd";
 import MainContent from "./main-content";
+import type { MainContentProps } from "@/types";
 
-export default function DesktopStickyCartPanel() {
+export default function DesktopStickyCartPanel(props: MainContentProps) {
   return (
     <div className="hidden lg:block">
       <Card
@@ -12,7 +13,7 @@ export default function DesktopStickyCartPanel() {
           </div>
         }
       >
-        <MainContent />
+        <MainContent {...props} />
       </Card>
     </div>
   );

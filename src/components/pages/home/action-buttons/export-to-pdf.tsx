@@ -1,11 +1,20 @@
-import { useBundleStore } from "@/store/bundle";
+import type { BundleItem } from "@/store/bundle";
 import { exportBuildToPDF } from "@/utils";
 import { DownloadOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import { useState } from "react";
 
-export default function ExportToPdf() {
-  const { getSelectedItems, maxBudget, getTotalCost } = useBundleStore();
+type props = {
+  maxBudget: number;
+  getTotalCost: () => number;
+  getSelectedItems: () => BundleItem[];
+};
+
+export default function ExportToPdf({
+  getSelectedItems,
+  maxBudget,
+  getTotalCost,
+}: props) {
   const [loading, setLoading] = useState(false);
 
   const selectedItems = getSelectedItems();

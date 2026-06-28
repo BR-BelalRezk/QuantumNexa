@@ -1,10 +1,12 @@
 import { RedoOutlined } from "@ant-design/icons";
 import { Tooltip, Button } from "antd";
-import { useBundleStore } from "@/store/bundle";
 
-export default function Redo() {
-  const { redo, canRedo } = useBundleStore();
+type props = {
+  redo: () => void;
+  canRedo: () => boolean;
+};
 
+export default function Redo({ redo, canRedo }: props) {
   return (
     <Tooltip title="Redo (Ctrl+Y)">
       <Button

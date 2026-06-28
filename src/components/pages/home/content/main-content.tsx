@@ -1,17 +1,26 @@
 import BudgetProgress from "@/components/shared/budget-progress";
 import SelectedItemsList from "@/components/shared/selected-items-list";
-import { useBundleStore } from "@/store/bundle";
 import ActionButtons from "../action-buttons";
+import type { MainContentProps } from "@/types";
 
-export default function MainContent() {
-  const { maxBudget, getTotalCost, getRemainingBudget, getSelectedItems } =
-    useBundleStore();
+export default function MainContent(props: MainContentProps) {
+  const {
+    maxBudget,
+    totalCost,
+    remainingBudget,
+    selectedItems,
+    budgetPercentage,
+    isOverBudget,
+    undo,
+    canUndo,
+    redo,
+    canRedo,
 
-  const totalCost = getTotalCost();
-  const remainingBudget = getRemainingBudget();
-  const selectedItems = getSelectedItems();
-  const budgetPercentage = (totalCost / maxBudget) * 100;
-  const isOverBudget = remainingBudget < 0;
+    getTotalCost,
+    getSelectedItems,
+    reset,
+  } = props.mainContentProps;
+
   return (
     <div className="space-y-4">
       <BudgetProgress
@@ -24,7 +33,16 @@ export default function MainContent() {
 
       <SelectedItemsList selectedItems={selectedItems} />
 
-      <ActionButtons />
+      <ActionButtons
+        undo={undo}
+        canUndo={canUndo}
+        redo={redo}
+        canRedo={canRedo}
+        maxBudget={maxBudget}
+        getTotalCost={getTotalCost}
+        getSelectedItems={getSelectedItems}
+        reset={reset}
+      />
     </div>
   );
 }

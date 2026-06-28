@@ -1,10 +1,13 @@
-import { useBundleStore } from "@/store/bundle";
+import type { BundleItem } from "@/store/bundle";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 
-export default function Reset() {
-  const { getSelectedItems, reset } = useBundleStore();
+type props = {
+  getSelectedItems: () => BundleItem[];
+  reset: () => void;
+};
 
+export default function Reset({ getSelectedItems, reset }: props) {
   const selectedItems = getSelectedItems();
 
   const handleReset = () => {

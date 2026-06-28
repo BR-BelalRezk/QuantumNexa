@@ -1,10 +1,12 @@
 import { Tooltip, Button } from "antd";
 import { UndoOutlined } from "@ant-design/icons";
-import { useBundleStore } from "@/store/bundle";
 
-export default function Undo() {
-  const { undo, canUndo } = useBundleStore();
+type props = {
+  undo: () => void;
+  canUndo: () => boolean;
+};
 
+export default function Undo({ undo, canUndo }: props) {
   return (
     <Tooltip title="Undo (Ctrl+Z)">
       <Button

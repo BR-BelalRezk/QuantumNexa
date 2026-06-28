@@ -1,36 +1,23 @@
-import { mockItems } from "@/lib/mock-data";
-import { useBundleStore } from "@/store/bundle";
+import { type BundleItem } from "@/store/bundle";
 import { Badge, Card, Spin, Tooltip } from "antd";
-import { useEffect, useState } from "react";
 
-export default function CategoryCards() {
-  const {
-    getSelectedItem,
-    isItemDisabled,
-    getDisabledReason,
-    setItems,
-    selectItem,
-  } = useBundleStore();
+type props = {
+  categories: string[];
+  getSelectedItem: (category: string) => BundleItem | null;
+  isItemDisabled: (itemId: string) => boolean;
+  getDisabledReason: (itemId: string) => string | null;
+  getCategoryItems: (category: string) => BundleItem[];
+  handleSelectItem: (category: string, itemId: string | null) => void;
+};
 
-  const [categories, setCategories] = useState<string[]>([]);
-
-  // Initialize store with mock data
-  useEffect(() => {
-    setItems(mockItems);
-    const uniqueCategories = Array.from(
-      new Set(mockItems.map((item) => item.category)),
-    ).sort();
-    setCategories(uniqueCategories);
-  }, [setItems]);
-
-  const getCategoryItems = (category: string) => {
-    return mockItems.filter((item) => item.category === category);
-  };
-
-  const handleSelectItem = (category: string, itemId: string | null) => {
-    selectItem(category, itemId);
-  };
-
+export default function CategoryCards({
+  getCategoryItems,
+  handleSelectItem,
+  categories,
+  getSelectedItem,
+  isItemDisabled,
+  getDisabledReason,
+}: props) {
   return (
     <div className="lg:col-span-2 space-y-6">
       {categories.length === 0 ? (

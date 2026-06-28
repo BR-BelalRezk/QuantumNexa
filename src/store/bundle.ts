@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 export interface BundleItem {
   id: string;
@@ -10,13 +10,14 @@ export interface BundleItem {
 }
 
 export interface BundleState {
+
   // Base data
   items: BundleItem[];
-  selectedItems: Record<string, string>;
+  selectedItems: Record<string, string>; 
   history: Array<Record<string, string>>;
   historyIndex: number;
   maxBudget: number;
-
+  
   // Actions
   selectItem: (category: string, itemId: string | null) => void;
   getSelectedItem: (category: string) => BundleItem | null;
@@ -43,7 +44,7 @@ export const useBundleStore = create<BundleState>((set, get) => ({
   selectItem: (category: string, itemId: string | null) => {
     const state = get();
     const newSelected = { ...state.selectedItems };
-
+    
     if (itemId === null) {
       delete newSelected[category];
     } else {
@@ -53,7 +54,7 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     // Add to history
     const newHistory = state.history.slice(0, state.historyIndex + 1);
     newHistory.push(newSelected);
-
+    
     set({
       selectedItems: newSelected,
       history: newHistory,
@@ -65,13 +66,13 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     const state = get();
     const itemId = state.selectedItems[category];
     if (!itemId) return null;
-    return state.items.find((item) => item.id === itemId) || null;
+    return state.items.find(item => item.id === itemId) || null;
   },
 
   getTotalCost: () => {
     const state = get();
     return Object.values(state.selectedItems).reduce((total, itemId) => {
-      const item = state.items.find((i) => i.id === itemId);
+      const item = state.items.find(i => i.id === itemId);
       return total + (item?.price || 0);
     }, 0);
   },
@@ -83,12 +84,8 @@ export const useBundleStore = create<BundleState>((set, get) => ({
 
   isItemDisabled: (itemId: string) => {
     const state = get();
-    const item = state.items.find((i) => i.id === itemId);
+    const item = state.items.find(i => i.id === itemId);
     if (!item) return false;
-
-    // If this item is already selected, it's never disabled (clicking it deselects)
-    const isAlreadySelected = Object.values(state.selectedItems).includes(itemId);
-    if (isAlreadySelected) return false;
 
     // Check budget constraint
     const totalCost = state.getTotalCost();
@@ -108,12 +105,8 @@ export const useBundleStore = create<BundleState>((set, get) => ({
 
   getDisabledReason: (itemId: string) => {
     const state = get();
-    const item = state.items.find((i) => i.id === itemId);
+    const item = state.items.find(i => i.id === itemId);
     if (!item) return null;
-
-    // Already-selected items are never disabled
-    const isAlreadySelected = Object.values(state.selectedItems).includes(itemId);
-    if (isAlreadySelected) return null;
 
     // Check budget constraint
     const totalCost = state.getTotalCost();
@@ -124,10 +117,8 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     // Check incompatibilities
     for (const [, selectedItemId] of Object.entries(state.selectedItems)) {
       if (item.incompatibleWith.includes(selectedItemId)) {
-        const incompatibleItem = state.items.find(
-          (i) => i.id === selectedItemId,
-        );
-        return `Incompatible with ${incompatibleItem?.name || "selected item"}`;
+        const incompatibleItem = state.items.find(i => i.id === selectedItemId);
+        return `Incompatible with ${incompatibleItem?.name || 'selected item'}`;
       }
     }
 
@@ -181,7 +172,7 @@ export const useBundleStore = create<BundleState>((set, get) => ({
   getSelectedItems: () => {
     const state = get();
     return Object.values(state.selectedItems)
-      .map((itemId) => state.items.find((i) => i.id === itemId))
+      .map(itemId => state.items.find(i => i.id === itemId))
       .filter((item): item is BundleItem => item !== undefined);
   },
 }));
