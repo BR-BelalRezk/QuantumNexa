@@ -50,7 +50,7 @@ export const mockItems: BundleItem[] = [
     name: "MSI MPG B760",
     price: 150,
     category: "Motherboard",
-    incompatibleWith: ["cpu-1", "cpu-3"],
+    incompatibleWith: ["cpu-2", "cpu-4"],
     specs: "Intel LGA1700, PCIe 4.0",
   },
   {
@@ -58,7 +58,7 @@ export const mockItems: BundleItem[] = [
     name: "Gigabyte B760 AORUS",
     price: 160,
     category: "Motherboard",
-    incompatibleWith: ["cpu-1", "cpu-3"],
+    incompatibleWith: ["cpu-2", "cpu-4"],
     specs: "Intel LGA1700, PCIe 4.0",
   },
   {

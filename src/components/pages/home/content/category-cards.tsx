@@ -53,7 +53,7 @@ export default function CategoryCards() {
                 return (
                   <Tooltip
                     key={item.id}
-                    title={disabledReason || item.specs}
+                    title={disabledReason ?? item.specs}
                     placement="top"
                   >
                     <Card

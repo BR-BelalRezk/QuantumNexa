@@ -87,6 +87,10 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     const item = state.items.find((i) => i.id === itemId);
     if (!item) return false;
 
+    // If this item is already selected, it's never disabled (clicking it deselects)
+    const isAlreadySelected = Object.values(state.selectedItems).includes(itemId);
+    if (isAlreadySelected) return false;
+
     // Check budget constraint
     const totalCost = state.getTotalCost();
     if (totalCost + item.price > state.maxBudget) {
@@ -109,6 +113,10 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     const state = get();
     const item = state.items.find((i) => i.id === itemId);
     if (!item) return null;
+
+    // Already-selected items are never disabled
+    const isAlreadySelected = Object.values(state.selectedItems).includes(itemId);
+    if (isAlreadySelected) return null;
 
     // Check budget constraint
     const totalCost = state.getTotalCost();

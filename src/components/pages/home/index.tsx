@@ -12,8 +12,8 @@ export default function Home() {
       <Layout.Content className="flex-1 container py-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <CategoryCards />
+          <DesktopStickyCartPanel />
         </div>
-        <DesktopStickyCartPanel />
       </Layout.Content>
       <MobileDrawer />
       <MainFooter />
