@@ -10,15 +10,14 @@ export interface BundleItem {
 }
 
 export interface BundleState {
-    
-//  Base data
+  // Base data
   items: BundleItem[];
   selectedItems: Record<string, string>;
   history: Array<Record<string, string>>;
   historyIndex: number;
   maxBudget: number;
 
-// Actions
+  // Actions
   selectItem: (category: string, itemId: string | null) => void;
   getSelectedItem: (category: string) => BundleItem | null;
   getTotalCost: () => number;
@@ -98,9 +97,7 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     }
 
     // Check incompatibilities
-    for (const [ , selectedItemId] of Object.entries(
-      state.selectedItems,
-    )) {
+    for (const [, selectedItemId] of Object.entries(state.selectedItems)) {
       if (item.incompatibleWith.includes(selectedItemId)) {
         return true;
       }
@@ -125,9 +122,7 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     }
 
     // Check incompatibilities
-    for (const [ , selectedItemId] of Object.entries(
-      state.selectedItems,
-    )) {
+    for (const [, selectedItemId] of Object.entries(state.selectedItems)) {
       if (item.incompatibleWith.includes(selectedItemId)) {
         const incompatibleItem = state.items.find(
           (i) => i.id === selectedItemId,
@@ -139,33 +134,7 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     return null;
   },
 
- 
-  reset: () => {
-    set({
-      selectedItems: {},
-      history: [{}],
-      historyIndex: 0,
-    });
-  },
-
-  setItems: (items: BundleItem[]) => {
-    set({ items });
-  },
-
-  getSelectedItems: () => {
-    const state = get();
-    return Object.values(state.selectedItems)
-      .map((itemId) => state.items.find((i) => i.id === itemId))
-      .filter((item): item is BundleItem => item !== undefined);
-  },
-
-
-
-
-
-
-// undo-redo functionality
- undo: () => {
+  undo: () => {
     const state = get();
     if (state.historyIndex > 0) {
       const newIndex = state.historyIndex - 1;
@@ -196,7 +165,23 @@ export const useBundleStore = create<BundleState>((set, get) => ({
     const state = get();
     return state.historyIndex < state.history.length - 1;
   },
-// undo-redo functionality
 
+  reset: () => {
+    set({
+      selectedItems: {},
+      history: [{}],
+      historyIndex: 0,
+    });
+  },
 
+  setItems: (items: BundleItem[]) => {
+    set({ items });
+  },
+
+  getSelectedItems: () => {
+    const state = get();
+    return Object.values(state.selectedItems)
+      .map((itemId) => state.items.find((i) => i.id === itemId))
+      .filter((item): item is BundleItem => item !== undefined);
+  },
 }));
