@@ -25,7 +25,7 @@ export default function Home() {
   }, [dispatch]);
 
   /*
-  The usage of Set  to remove duplicate category names, 
+  The usage of Set to remove duplicate category names, 
   and simplify the code by using the map method to extract the category names from the items array. 
   The sort method is used to sort the categories alphabetically.
   */

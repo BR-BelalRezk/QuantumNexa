@@ -1,10 +1,9 @@
-import BudgetProgress from "@/components/shared/budget-progress";
-import SelectedItemsList from "@/components/shared/selected-items-list";
-
-import ActionButtons from "../action-buttons";
+import BudgetProgress from "@/components/pages/home/content/cart-panel/budget-progress";
+import SelectedItemsList from "@/components/pages/home/content/cart-panel/selected-items-list";
 
 import { useBundle } from "@/hooks/useBundle";
 import { motion } from "motion/react";
+import ActionButtons from "./action-buttons";
 
 export default function MainContent() {
   const { maxBudget, totalCost, remainingBudget, selectedItems } = useBundle();
