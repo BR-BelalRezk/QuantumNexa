@@ -18,12 +18,7 @@ export default function MainHeader() {
           <Tooltip
             title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
           >
-            <Button
-              type="text"
-              icon={<BgColorsOutlined />}
-              onClick={toggleTheme}
-              className="text-white/70"
-            />
+            <Button icon={<BgColorsOutlined />} onClick={toggleTheme} />
           </Tooltip>
         </div>
       </div>
