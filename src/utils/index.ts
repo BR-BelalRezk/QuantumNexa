@@ -1,8 +1,9 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import jsPDF from "jspdf";
-import { type BundleItem } from "@/store/bundle";
+import type { BundleItem } from "@/types";
 
+// shadcn helper function
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -14,7 +15,6 @@ export function getBudgetColor(budgetPercentage: number) {
 }
 
 // AI generated function to export the selected items and their details to a PDF file
-
 export async function exportBuildToPDF(
   selectedItems: BundleItem[],
   totalCost: number,

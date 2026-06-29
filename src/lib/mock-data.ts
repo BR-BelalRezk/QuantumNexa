@@ -1,4 +1,4 @@
-import { type BundleItem } from "@/store/bundle";
+import type { BundleItem } from "@/types";
 
 // AI generated mock data for testing purposes
 export const mockItems: BundleItem[] = [

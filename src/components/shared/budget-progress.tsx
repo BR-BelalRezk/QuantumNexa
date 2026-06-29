@@ -2,7 +2,7 @@ import { Progress } from "antd";
 
 import { getBudgetColor } from "@/utils";
 
-type BudgetProgressProps = {
+type props = {
   totalCost: number;
   maxBudget: number;
   remainingBudget: number;
@@ -14,7 +14,7 @@ export default function BudgetProgress({
   maxBudget,
   remainingBudget,
   budgetPercentage,
-}: BudgetProgressProps) {
+}: props) {
   const isOverBudget = remainingBudget < 0;
 
   return (

@@ -9,6 +9,13 @@ import {
   isItemDisabled,
 } from "@/utils/bundle-utils";
 
+/* 
+Centerlization of the bundle (Business) logic for the components to use, 
+this is a custom hook that uses the context and 
+the utils functions to provide a clean API for the components to use. 
+It also provides undo/redo functionality and reset functionality (we will later explain the approach of doing this functionality in the readme file).
+*/
+
 export function useBundle() {
   const { state, dispatch } = useBundleContext();
 

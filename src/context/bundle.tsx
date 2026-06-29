@@ -12,6 +12,8 @@ const initialState: BundleState = {
   maxBudget: 1000,
 };
 
+
+// Usage of reducer instead of useState for better state management and undo/redo functionality
 function reducer(state: BundleState, action: BundleAction): BundleState {
   switch (action.type) {
     case "SET_ITEMS":
@@ -93,6 +95,7 @@ function reducer(state: BundleState, action: BundleAction): BundleState {
       return state;
   }
 }
+
 
 type BundleContextValue = {
   state: BundleState;

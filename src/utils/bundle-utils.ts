@@ -39,10 +39,14 @@ export function getRemainingBudget(
   return maxBudget - getTotalCost(selectedItems, items);
 }
 
-/**
- * Checks if an item is incompatible with the current build.
- * We check BOTH directions.
- */
+/*
+Got some AI help here, 
+but I think this is a good implementation of the logic for checking 
+incompatibilities and budget constraints for bundle items. 
+The functions are well-structured and make use of
+helper functions to keep the code clean and readable.
+*/
+
 export function hasIncompatibility(
   candidate: BundleItem,
   selectedItems: Record<string, string>,
@@ -58,13 +62,6 @@ export function hasIncompatibility(
   });
 }
 
-/**
- * Checks whether selecting this item would exceed the budget.
- *
- * IMPORTANT:
- * We subtract the current category selection because it
- * will be replaced.
- */
 export function exceedsBudget(
   candidate: BundleItem,
   selectedItems: Record<string, string>,

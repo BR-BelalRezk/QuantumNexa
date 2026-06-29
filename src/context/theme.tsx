@@ -1,5 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 
+/* 
+ If using Next.js, I would recommend using the built-in 
+ next-themes package instead of this custom implementation. 
+ However, this implementation is still valid and can be used in any React project.
+ */
+
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 type Theme = "light" | "dark";

@@ -22,7 +22,7 @@ export default function MainHeader() {
               type="text"
               icon={<BgColorsOutlined />}
               onClick={toggleTheme}
-              className="text-foreground"
+              className="text-white/70"
             />
           </Tooltip>
         </div>
