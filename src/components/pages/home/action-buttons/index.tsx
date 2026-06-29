@@ -7,7 +7,7 @@ import ExportToPdf from "./export-to-pdf";
 
 export default function ActionButtons() {
   return (
-    <div className="space-y-2 border-t border-border pt-2">
+    <div className="space-y-2 border-t border-border pt-4">
       <Space direction="vertical" style={{ width: "100%" }}>
         <div className="flex gap-2">
           <Undo />

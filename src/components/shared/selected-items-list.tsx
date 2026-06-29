@@ -1,16 +1,18 @@
 import { Empty } from "antd";
-import { type BundleItem } from "@/store/bundle";
 
-type props = {
+import { type BundleItem } from "@/types";
+
+type Props = {
   selectedItems: BundleItem[];
 };
 
-export default function SelectedItemsList({ selectedItems }: props) {
+export default function SelectedItemsList({ selectedItems }: Props) {
   return (
     <div>
-      <h3 className="font-semibold text-foreground mb-2">
+      <h3 className="mb-3 font-semibold text-foreground">
         Selected Items ({selectedItems.length})
       </h3>
+
       {selectedItems.length === 0 ? (
         <Empty description="No items selected" />
       ) : (
@@ -18,15 +20,17 @@ export default function SelectedItemsList({ selectedItems }: props) {
           {selectedItems.map((item) => (
             <div
               key={item.id}
-              className="flex justify-between items-center p-2 bg-secondary rounded-md text-sm"
+              className="flex items-center justify-between rounded-md bg-secondary p-3"
             >
               <div className="flex-1">
-                <p className="font-medium text-foreground m-0">{item.name}</p>
-                <p className="text-xs text-muted-foreground m-0">
+                <p className="m-0 font-medium text-foreground">{item.name}</p>
+
+                <p className="m-0 text-xs text-muted-foreground">
                   {item.category}
                 </p>
               </div>
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400 ml-2">
+
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400">
                 ${item.price}
               </span>
             </div>

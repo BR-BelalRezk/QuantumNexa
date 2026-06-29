@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 
 import IntroScreen from "@/components/screens/intro-screen";
 import MainScreen from "@/components/screens/main-screen";
+import { Home } from "@/components/pages";
 
 import { ThemeProvider, useTheme } from "@/context/theme";
-import { Home } from "@/components/pages";
+import { BundleProvider } from "@/context/bundle";
 
 function AppContent() {
   const { theme: currentTheme } = useTheme();
@@ -14,6 +15,7 @@ function AppContent() {
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2800);
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -31,15 +33,17 @@ function AppContent() {
         },
       }}
     >
-      <AnimatePresence mode="wait">
-        {loading ? (
-          <IntroScreen key="intro" />
-        ) : (
-          <MainScreen key="main">
-            <Home />
-          </MainScreen>
-        )}
-      </AnimatePresence>
+      <BundleProvider>
+        <AnimatePresence mode="wait">
+          {loading ? (
+            <IntroScreen key="intro" />
+          ) : (
+            <MainScreen key="main">
+              <Home />
+            </MainScreen>
+          )}
+        </AnimatePresence>
+      </BundleProvider>
     </ConfigProvider>
   );
 }

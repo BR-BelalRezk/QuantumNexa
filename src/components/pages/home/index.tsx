@@ -7,20 +7,22 @@ import MainFooter from "@/components/layout/footer";
 import CategoryCards from "./content/category-cards";
 import DesktopStickyCartPanel from "./content/desktop-sticky-cart-panel";
 
-import { useBundleStore } from "@/store/bundle";
 import { mockItems } from "@/lib/mock-data";
+import { useBundle } from "@/hooks/useBundle";
 
 export default function Home() {
-  const setItems = useBundleStore((state) => state.setItems);
+  const { items, dispatch } = useBundle();
 
   useEffect(() => {
-    setItems(mockItems);
-  }, [setItems]);
+    dispatch({
+      type: "SET_ITEMS",
+      payload: mockItems,
+    });
+  }, [dispatch]);
 
-  const categories = useMemo(
-    () => [...new Set(mockItems.map((item) => item.category))].sort(),
-    [],
-  );
+  const categories = useMemo(() => {
+    return [...new Set(items.map((item) => item.category))].sort();
+  }, [items]);
 
   return (
     <Layout className="min-h-screen flex flex-col bg-background">

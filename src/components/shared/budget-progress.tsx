@@ -1,42 +1,48 @@
-import { getBudgetColor } from "@/utils";
 import { Progress } from "antd";
 
-type props = {
-  budgetPercentage: number;
+import { getBudgetColor } from "@/utils";
+
+type BudgetProgressProps = {
   totalCost: number;
   maxBudget: number;
   remainingBudget: number;
-  isOverBudget: boolean;
+  budgetPercentage: number;
 };
 
 export default function BudgetProgress({
-  budgetPercentage,
+  totalCost,
   maxBudget,
   remainingBudget,
-  isOverBudget,
-  totalCost,
-}: props) {
+  budgetPercentage,
+}: BudgetProgressProps) {
+  const isOverBudget = remainingBudget < 0;
+
   return (
-    <div>
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-sm font-semibold text-foreground">
-          Budget Usage
-        </span>
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-semibold">Budget Usage</span>
+
         <span
           className="text-sm font-bold"
-          style={{ color: getBudgetColor(budgetPercentage) }}
+          style={{
+            color: getBudgetColor(budgetPercentage),
+          }}
         >
           ${totalCost} / ${maxBudget}
         </span>
       </div>
+
       <Progress
-        percent={Math.min(budgetPercentage, 100)}
+        percent={Math.min(Math.round(budgetPercentage), 100)}
         strokeColor={getBudgetColor(budgetPercentage)}
         status={isOverBudget ? "exception" : "active"}
+        showInfo={false}
+        aria-label="Budget usage"
       />
-      <div className="text-xs text-muted-foreground mt-1">
+
+      <div className="text-xs" aria-live="polite">
         {isOverBudget ? (
-          <span className="text-destructive font-semibold">
+          <span className="font-semibold text-red-500">
             Over budget by ${Math.abs(remainingBudget)}
           </span>
         ) : (

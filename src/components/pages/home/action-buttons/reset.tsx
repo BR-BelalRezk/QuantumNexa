@@ -1,16 +1,14 @@
 import { Button, message } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
-import { useBundleStore } from "@/store/bundle";
+import { useBundle } from "@/hooks/useBundle";
 
 export default function Reset() {
-  const { reset, getSelectedItems } = useBundleStore();
-
-  const selectedItems = getSelectedItems();
+  const { reset, selectedItems } = useBundle();
 
   const handleReset = () => {
     reset();
-    message.info("Build reset to empty state");
+    message.success("Build reset successfully.");
   };
 
   return (
