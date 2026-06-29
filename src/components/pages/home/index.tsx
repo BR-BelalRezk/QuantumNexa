@@ -29,7 +29,7 @@ export default function Home() {
   and simplify the code by using the map method to extract the category names from the items array. 
   The sort method is used to sort the categories alphabetically.
   */
- 
+
   const categories = [...new Set(items.map((item) => item.category))].sort();
 
   return (
@@ -37,7 +37,7 @@ export default function Home() {
       <MainHeader />
 
       <Layout.Content className="container flex-1 py-6">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 h-full">
           <CategoryCards categories={categories} />
 
           <CartPanel />

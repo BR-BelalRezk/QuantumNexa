@@ -4,6 +4,7 @@ import SelectedItemsList from "@/components/shared/selected-items-list";
 import ActionButtons from "../action-buttons";
 
 import { useBundle } from "@/hooks/useBundle";
+import { motion } from "motion/react";
 
 export default function MainContent() {
   const { maxBudget, totalCost, remainingBudget, selectedItems } = useBundle();
@@ -11,7 +12,7 @@ export default function MainContent() {
   const budgetPercentage = (totalCost / maxBudget) * 100;
 
   return (
-    <div className="space-y-4">
+    <motion.div layout className="space-y-4">
       <BudgetProgress
         totalCost={totalCost}
         maxBudget={maxBudget}
@@ -22,6 +23,6 @@ export default function MainContent() {
       <SelectedItemsList selectedItems={selectedItems} />
 
       <ActionButtons />
-    </div>
+    </motion.div>
   );
 }
