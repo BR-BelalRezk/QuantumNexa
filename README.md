@@ -1,8 +1,15 @@
-# QuantumNexa
+# Quantum Nexa
 
-QuantumNexa is a modern PC configuration experience built with **React 19**, **TypeScript**, **Context API**, **Ant Design**, **Tailwind CSS v4**, and **Motion**.
+Quantum Nexa is a modern PC configuration experience built with **React 19**, **TypeScript**, **Context API**, **Ant Design**, **Tailwind CSS v4**, and **Motion**.
 
 The idea behind the project was simple: create a builder that helps users assemble a compatible PC while staying within a fixed budget, all wrapped in a clean and polished interface.
+
+---
+
+## Links
+
+- 🌐 **Live Demo:** https://quantum-nexa.vercel.app/
+- 💻 **GitHub Repository:** https://github.com/BR-BelalRezk/QuantumNexa
 
 ---
 
@@ -38,7 +45,7 @@ Instead of copying one product, I mixed ideas from a few different places:
 - **Apple** → Motion, spacing, typography, and the premium feel.
 - **NZXT BLD** → Sticky build summary, product cards, and responsive layout.
 
-The goal wasn't to recreate any of them, but to combine the ideas I liked into something that feels like **QuantumNexa**.
+The goal wasn't to recreate any of them, but to combine the ideas I liked into something that feels like **Quantum Nexa**.
 
 ---
 
@@ -75,9 +82,7 @@ You'll notice motion in a few places:
 
 Undo and Redo are implemented by keeping a history of the user's selections.
 
-Every change saves the current build into that history.
-
-Undo simply moves one step back, while Redo moves one step forward.
+Every change saves the current build into that history. Undo simply moves one step back, while Redo moves one step forward.
 
 If the user goes back and then makes a new selection, the old future history is removed, just like in most editors.
 
@@ -88,21 +93,18 @@ I chose this approach because it's simple, predictable, and easy to maintain.
 # Notes
 
 - I used the **Context API** because the application only has one shared state, so introducing another state management library felt unnecessary.
-
 - Since this project uses **React 19**, I avoided unnecessary `useMemo` and `useCallback` to keep the code cleaner and follow the latest React recommendations.
-
 - Business logic is separated from the UI whenever possible to keep components focused on rendering.
-
 - I tried to keep components small, reusable, and easy to understand.
 
 ---
 
 ## Thanks!
 
-Thank you for taking the time to review **QuantumNexa**.
+Thank you for taking the time to review **Quantum Nexa**.
 
 I genuinely enjoyed building this project, and I hope you enjoy exploring it as much as I enjoyed creating it.
 
 ---
 
-> **Fun fact:** I tried connecting an Intel CPU to an AMD motherboard... Quantum Nexa politely reminded me that's not how computers work. 😄
+> **P.S.** If you find a way to pair an Intel CPU with an AMD motherboard, please let me know, because that means I have a bug to fix. 😄
