@@ -12,7 +12,6 @@ const initialState: BundleState = {
   maxBudget: 1000,
 };
 
-
 // Usage of reducer instead of useState for better state management and undo/redo functionality
 function reducer(state: BundleState, action: BundleAction): BundleState {
   switch (action.type) {
@@ -39,6 +38,11 @@ function reducer(state: BundleState, action: BundleAction): BundleState {
         selectedItems[category] = itemId;
       }
 
+      /*
+      For making a new selection.
+      The old future is discarded because the user's actions have created a new timeline.
+      Push new snapshot to history and update the historyIndex to point to the latest snapshot.
+      */
       const history = state.history.slice(0, state.historyIndex + 1);
 
       history.push(selectedItems);
@@ -95,7 +99,6 @@ function reducer(state: BundleState, action: BundleAction): BundleState {
       return state;
   }
 }
-
 
 type BundleContextValue = {
   state: BundleState;
